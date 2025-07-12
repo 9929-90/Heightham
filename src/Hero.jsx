@@ -1,4 +1,3 @@
-// src/Hero.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -35,7 +34,7 @@ const Hero = () => {
   return (
     <div className="w-full pt-2 bg-white">
       <div
-        className="flex overflow-x-auto px-6 gap-6 h-[90vh] scroll-smooth snap-x snap-mandatory"
+        className="flex overflow-x-auto px-4 gap-4 h-[90vh] scroll-smooth snap-x snap-mandatory md:gap-6 md:px-6"
         style={{
           scrollbarWidth: 'none', // Firefox
           msOverflowStyle: 'none', // IE and Edge
@@ -44,7 +43,7 @@ const Hero = () => {
         {slides.map((slide, index) => (
           <motion.div
             key={slide.id}
-            className="relative flex-shrink-0 h-full w-[calc(100vw/3.3)] snap-start"
+            className="relative flex-shrink-0 h-full w-[85vw] snap-start md:w-[calc(100vw/3.3)]"
             variants={slideVariants}
             initial="hidden"
             whileInView="visible"
@@ -57,9 +56,9 @@ const Hero = () => {
               alt={slide.headline}
               className="w-full h-full object-cover rounded-lg"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-6 text-white">
+            <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-4 text-white md:p-6">
               <motion.h2
-                className="text-4xl font-light tracking-wide mb-2 leading-snug"
+                className="text-2xl font-light tracking-wide mb-2 leading-snug md:text-4xl"
                 style={{ fontFamily: `'Playfair Display', serif` }}
                 variants={textVariants}
                 initial="hidden"
@@ -70,7 +69,7 @@ const Hero = () => {
                 {slide.headline}
               </motion.h2>
               <motion.p
-                className="text-sm mb-3 opacity-90"
+                className="text-xs mb-3 opacity-90 md:text-sm"
                 variants={textVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -81,7 +80,7 @@ const Hero = () => {
               </motion.p>
               <motion.a
                 href="#"
-                className="text-sm underline underline-offset-4 hover:text-amber-300 transition duration-200"
+                className="text-xs underline underline-offset-4 hover:text-amber-300 transition duration-200 md:text-sm"
                 variants={textVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -99,6 +98,11 @@ const Hero = () => {
       <style jsx>{`
         div::-webkit-scrollbar {
           display: none;
+        }
+        @media (max-width: 768px) {
+          .snap-start {
+            scroll-snap-align: center;
+          }
         }
       `}</style>
     </div>
